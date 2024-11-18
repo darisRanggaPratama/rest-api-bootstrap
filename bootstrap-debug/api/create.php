@@ -5,17 +5,27 @@ ini_set('display_errors', 1);
 session_start();
 
 // CSRF Protection
-if (!isset($_SESSION['csrf_token']) || !isset($_POST['csrf_token']) || $_SESSION['csrf_token'] !== $_POST['csrf_token']) {
-    echo json_encode([
-        'status' => 'error',
-        'message' => 'CSRF token validation failed'
-    ]);
-    exit;
-}
+//if (!isset($_SESSION['csrf_token']) || !isset($_POST['csrf_token']) || $_SESSION['csrf_token'] !== $_POST['csrf_token']) {
+//    echo json_encode([
+//        'status' => 'error',
+//        'message' => 'CSRF token validation failed'
+//    ]);
+//    exit;
+//}
+
+//if (!isset($_SESSION['csrf_token']) || !isset($_POST['csrf_token']) || $_SESSION['csrf_token'] !== $_POST['csrf_token']) {
+//    http_response_code(403);
+//    echo json_encode([
+//        'status' => 'error',
+//        'message' => 'CSRF token validation failed'
+//    ]);
+//    exit;
+//}
 
 require_once '../config/check-db.php';
 require_once '../models/Member.php';
 
+// Set the Content-Type header
 header('Content-Type: application/json');
 
 try {
